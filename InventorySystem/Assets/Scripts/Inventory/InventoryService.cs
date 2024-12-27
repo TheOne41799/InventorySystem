@@ -1,6 +1,6 @@
-using UnityEngine;
 
-public class InventoryService : MonoBehaviour
+
+public class InventoryService
 {
 
 }

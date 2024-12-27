@@ -1,6 +1,6 @@
-using UnityEngine;
 
-public class AudioService : MonoBehaviour
+
+public class AudioService
 {
 
 }

@@ -1,6 +1,6 @@
-using UnityEngine;
 
-public class UIService : MonoBehaviour
+
+public class UIService
 {
     
 }
