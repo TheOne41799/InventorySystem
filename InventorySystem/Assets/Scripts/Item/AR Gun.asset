@@ -12,12 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0d7b493c8d50148beab400b6f3a2fd, type: 3}
   m_Name: AR Gun
   m_EditorClassIdentifier: 
-  itemType: 0
+  itemType: 2
   itemIcon: {fileID: 0}
-  itemName: 
-  itemDescription: 
-  itemSellingPrice: 0
-  itemBuyingPrice: 0
-  itemWeight: 0
-  itemRarity: 0
-  quantity: 0
+  itemName: M416
+  itemDescription: 'An Assault Rifle
+
+    Max Capacity per round is 30
+
+    Uses
+    5.56mm bullets'
+  itemSellingPrice: 500
+  itemBuyingPrice: 640
+  itemWeight: 2
+  itemRarity: 2
+  quantity: 1
