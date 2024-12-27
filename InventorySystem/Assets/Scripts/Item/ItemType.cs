@@ -1,10 +1,13 @@
 
 
-public enum ItemType
+namespace InventorySystem.Items
 {
-    NONE,
-    MATERIAL,
-    WEAPON,
-    CONSUMABLE,
-    TREASURE
+    public enum ItemType
+    {
+        NONE,
+        MATERIAL,
+        WEAPON,
+        CONSUMABLE,
+        TREASURE
+    }
 }
