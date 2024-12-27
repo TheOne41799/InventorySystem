@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace InventorySystem.Sound
 {
-    [CreateAssetMenu(fileName = "SoundScriptableObject", menuName = "ScriptableObjects/SoundScriptableObject")]
-    public class SoundScriptableObject : ScriptableObject
+    [CreateAssetMenu(menuName = "ScriptableObjects/Sound SO", fileName = "SoundSO")]
+    public class SoundSO : ScriptableObject
     {
         public Sounds[] audioList;
     }

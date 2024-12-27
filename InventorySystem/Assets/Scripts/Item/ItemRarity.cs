@@ -1,10 +1,12 @@
 
-
-public enum ItemRarity
+namespace InventorySystem.Items
 {
-    VERY_COMMON,
-    COMMON, 
-    RARE,
-    EPIC,
-    LEGENDARY
+    public enum ItemRarity
+    {
+        VERY_COMMON,
+        COMMON,
+        RARE,
+        EPIC,
+        LEGENDARY
+    }
 }

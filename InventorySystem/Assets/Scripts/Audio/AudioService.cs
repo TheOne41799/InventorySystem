@@ -5,11 +5,11 @@ namespace InventorySystem.Sound
 {
     public class AudioService
     {
-        private SoundScriptableObject soundScriptableObject;
+        private SoundSO soundScriptableObject;
         private AudioSource audioEffects;
         private AudioSource backgroundMusic;
 
-        public AudioService(SoundScriptableObject soundScriptableObject, AudioSource audioEffectSource, AudioSource bgMusicSource)
+        public AudioService(SoundSO soundScriptableObject, AudioSource audioEffectSource, AudioSource bgMusicSource)
         {
             this.soundScriptableObject = soundScriptableObject;
             audioEffects = audioEffectSource;
