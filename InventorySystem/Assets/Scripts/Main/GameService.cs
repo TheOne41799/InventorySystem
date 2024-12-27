@@ -15,7 +15,6 @@ namespace InventorySystem.Main
         [SerializeField] private AudioSource sfxSource;
         [SerializeField] private AudioSource bgMusicSource;
 
-
         private void Start()
         {
             InitializeServices();

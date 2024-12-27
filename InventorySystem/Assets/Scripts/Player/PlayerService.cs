@@ -6,11 +6,9 @@ namespace InventorySystem.Player
     {
         private PlayerView playerView;
 
-
         public PlayerService(PlayerView playerView) 
         {
-            this.playerView = playerView;
-            
+            this.playerView = playerView;            
         }
 
         public void Init()
