@@ -17,8 +17,6 @@ namespace InventorySystem.Events
             }
         }
 
-
-
         public EventService()
         {
 
