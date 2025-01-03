@@ -11,7 +11,7 @@ namespace InventorySystem.Shop
         private ItemDatabaseSO database;
         private UIService uIService;
 
-        public int totalShopSlots = 20;
+        public int totalShopSlots = 7;
 
         public List<UISlot> slots = new List<UISlot>();
 
@@ -37,6 +37,10 @@ namespace InventorySystem.Shop
                 UISlot slot = newItem.GetComponent<UISlot>();
                 slots.Add(slot);
                 uIService.AddShopSlots(slot);
+
+                slot.slotImage.sprite = database.items[i].itemIcon;
+                slot.quantityText.text = database.items[i].quantity.ToString();
+                slot.itemID = database.items[i].itemID;
             }
         }
     }

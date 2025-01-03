@@ -3,6 +3,7 @@ using InventorySystem.Items;
 using InventorySystem.UI;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace InventorySystem.Inventory
 {
@@ -18,6 +19,17 @@ namespace InventorySystem.Inventory
         public List<ItemSO> inventoryItems = new List<ItemSO>();
 
         public int currentSlotIndex;
+
+
+        //How to add an item
+        //  Select an item from shop
+        //  Check for cash, weight of inventory, availability of slot in inventory
+        //  Purchase item
+        //  After purchasing check if the item is stackable
+        //      If yes, look for the first similar item, look for stack amount, if enough place - add
+        //      else keep looking until you find one
+        //      If none found, add item in the first empty slot
+        //      If not stackable, add item in the first empty slot
 
 
         public InventoryService(ItemDatabaseSO db, UIService uiServ) 
@@ -53,6 +65,23 @@ namespace InventorySystem.Inventory
                 inventoryItems.Add(item);
 
                 uIService.SetSlotProperties(currentSlotIndex, item.quantity, item.itemIcon);
+
+                currentSlotIndex++;
+            }
+        }
+
+        public void AddItem(ItemID id)
+        {
+            if (inventoryItems.Count < totalInventorySlots)
+            {
+                for (int i = 0; i < database.items.Count; i++)
+                {
+                    if (database.items[i].itemID == id)
+                    {
+                        inventoryItems.Add(database.items[i]);
+                        uIService.SetSlotProperties(currentSlotIndex, database.items[i].quantity, database.items[i].itemIcon);
+                    }
+                }
 
                 currentSlotIndex++;
             }
