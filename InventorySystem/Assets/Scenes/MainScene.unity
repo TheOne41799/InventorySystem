@@ -903,9 +903,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3387824b28014468e04ba65801f52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotPanel: {fileID: 1704191884}
-  inventoryslot: {fileID: 4183890436503359038, guid: 45e7a961ed38dc84bb43b61ad2a13d1b,
+  inventorySlotPanel: {fileID: 1704191884}
+  shopSlotPanel: {fileID: 1389554058}
+  uiSlotPrefab: {fileID: 4183890436503359038, guid: 45e7a961ed38dc84bb43b61ad2a13d1b,
     type: 3}
+  inventorySlots: []
+  shopSlots: []
 --- !u!1 &717536049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,7 +1257,7 @@ GameObject:
   - component: {fileID: 1389554061}
   - component: {fileID: 1389554060}
   m_Layer: 5
-  m_Name: SlotPanel
+  m_Name: ShopSlotPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1354,7 +1357,7 @@ GameObject:
   - component: {fileID: 1704191886}
   - component: {fileID: 1704191888}
   m_Layer: 5
-  m_Name: SlotPanel
+  m_Name: InventorySlotPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -27,5 +27,13 @@ namespace InventorySystem.Main
             inventoryService.InitializeInventoryUI();
             shopService.InitializeShopUI();
         }
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                inventoryService.AddItem(itemDatabase.items[0]);
+            }
+        }
     }
 }

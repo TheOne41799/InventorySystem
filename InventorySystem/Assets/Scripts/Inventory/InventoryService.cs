@@ -15,11 +15,17 @@ namespace InventorySystem.Inventory
 
         public List<UISlot> slots = new List<UISlot>();
 
+        public List<ItemSO> inventoryItems = new List<ItemSO>();
+
+        public int currentSlotIndex;
+
 
         public InventoryService(ItemDatabaseSO db, UIService uiServ) 
         {
             this.database = db;
             this.uIService = uiServ;
+
+            currentSlotIndex = 0;
         }
 
         public void InitializeInventoryUI()
@@ -39,5 +45,29 @@ namespace InventorySystem.Inventory
                 uIService.AddInventorySlots(slot);                
             }
         }
+
+        public void AddItem(ItemSO item)
+        {
+            if (inventoryItems.Count < totalInventorySlots)
+            {
+                inventoryItems.Add(item);
+
+                uIService.SetSlotProperties(currentSlotIndex, item.quantity, item.itemIcon);
+
+                currentSlotIndex++;
+            }
+        }
+
+        /*public void RemoveItem(int index)
+        {
+            if (inventoryItems.Count > 0)
+            {
+                inventoryItems.RemoveAt(index);
+
+                uIService.SetSlotProperties(currentSlotIndex, 0, null);
+
+                currentSlotIndex--;
+            }
+        }*/
     }
 }
