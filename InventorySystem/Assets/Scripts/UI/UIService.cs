@@ -1,5 +1,4 @@
 
-
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,27 +7,20 @@ namespace InventorySystem.UI
     public class UIService: MonoBehaviour
     {
         public GameObject slotPanel;
-        public GameObject inventoryslot;
+        public GameObject inventorySlotPrefab;
 
-        public List<GameObject> items = new List<GameObject>();
-
-        public int totalInventorySlots = 30;
+        public List<UISlot> slots = new List<UISlot>();
 
 
-        private void Start()
+        public void AddSlots(UISlot slot)
         {
-            for (int i = 0; i < totalInventorySlots; i++)
-            {
-                GameObject newItem = Instantiate(inventoryslot);
-                newItem.transform.SetParent(slotPanel.transform);
+            slots.Add(slot);
+        }
 
-                RectTransform rectTransform = newItem.GetComponent<RectTransform>();
-                rectTransform.localScale = Vector3.one;
-                rectTransform.anchoredPosition3D = Vector3.zero;
-                rectTransform.localRotation = Quaternion.identity;
-
-                items.Add(newItem);
-            }
+        public void SetSlotProperties(int id, int quantity, Sprite sprite)
+        {
+            slots[id].quantityText.text = quantity.ToString();
+            slots[id].slotImage.sprite = sprite;
         }
     }
 }

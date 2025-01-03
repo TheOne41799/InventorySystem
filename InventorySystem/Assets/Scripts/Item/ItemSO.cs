@@ -5,7 +5,6 @@ namespace InventorySystem.Items
     [CreateAssetMenu(menuName = "ScriptableObjects/Inventory Item SO", fileName = "ItemSO")]
     public class ItemSO : ScriptableObject
     {
-        public int id;
         public ItemType itemType;
         public Sprite itemIcon;
 
