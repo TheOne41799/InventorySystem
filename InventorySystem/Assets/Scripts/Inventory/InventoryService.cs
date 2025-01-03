@@ -26,8 +26,8 @@ namespace InventorySystem.Inventory
         {
             for (int i = 0; i < totalInventorySlots; i++)
             {
-                GameObject newItem = GameObject.Instantiate(uIService.inventorySlotPrefab);
-                newItem.transform.SetParent(uIService.slotPanel.transform);
+                GameObject newItem = GameObject.Instantiate(uIService.uiSlotPrefab);
+                newItem.transform.SetParent(uIService.inventorySlotPanel.transform);
 
                 RectTransform rectTransform = newItem.GetComponent<RectTransform>();
                 rectTransform.localScale = Vector3.one;
@@ -36,7 +36,7 @@ namespace InventorySystem.Inventory
 
                 UISlot slot = newItem.GetComponent<UISlot>();
                 slots.Add(slot);
-                uIService.AddSlots(slot);                
+                uIService.AddInventorySlots(slot);                
             }
         }
     }

@@ -6,21 +6,28 @@ namespace InventorySystem.UI
 {
     public class UIService: MonoBehaviour
     {
-        public GameObject slotPanel;
-        public GameObject inventorySlotPrefab;
+        public GameObject inventorySlotPanel;
+        public GameObject shopSlotPanel;
+        public GameObject uiSlotPrefab;
 
-        public List<UISlot> slots = new List<UISlot>();
+        public List<UISlot> inventorySlots = new List<UISlot>();
+        public List<UISlot> shopSlots = new List<UISlot>();
 
 
-        public void AddSlots(UISlot slot)
+        public void AddInventorySlots(UISlot slot)
         {
-            slots.Add(slot);
+            inventorySlots.Add(slot);
+        }
+
+        public void AddShopSlots(UISlot slot)
+        {
+            shopSlots.Add(slot);
         }
 
         public void SetSlotProperties(int id, int quantity, Sprite sprite)
         {
-            slots[id].quantityText.text = quantity.ToString();
-            slots[id].slotImage.sprite = sprite;
+            inventorySlots[id].quantityText.text = quantity.ToString();
+            inventorySlots[id].slotImage.sprite = sprite;
         }
     }
 }

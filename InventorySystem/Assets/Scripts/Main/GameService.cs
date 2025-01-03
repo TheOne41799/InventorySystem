@@ -2,6 +2,7 @@ using UnityEngine;
 using InventorySystem.Items;
 using InventorySystem.UI;
 using InventorySystem.Inventory;
+using InventorySystem.Shop;
 
 namespace InventorySystem.Main
 {
@@ -10,11 +11,13 @@ namespace InventorySystem.Main
         public ItemDatabaseSO itemDatabase;
         public UIService uiService;
         public InventoryService inventoryService;
+        public ShopService shopService;
 
 
         private void Start()
         {
             inventoryService = new InventoryService(itemDatabase, uiService);
+            shopService = new ShopService(itemDatabase, uiService);
 
             Init();
         }
@@ -22,6 +25,7 @@ namespace InventorySystem.Main
         private void Init()
         {
             inventoryService.InitializeInventoryUI();
+            shopService.InitializeShopUI();
         }
     }
 }

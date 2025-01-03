@@ -4,8 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UISlot : MonoBehaviour
+namespace InventorySystem.UI
 {
-    public Image slotImage;
-    public TextMeshProUGUI quantityText;
+    public class UISlot : MonoBehaviour
+    {
+        public Image slotImage;
+        public TextMeshProUGUI quantityText;
+    }
 }
