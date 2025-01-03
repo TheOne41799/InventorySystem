@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff0d7b493c8d50148beab400b6f3a2fd, type: 3}
-  m_Name: Item
+  m_Name: ItemSO 2
   m_EditorClassIdentifier: 
-  itemType: 1
-  itemIcon: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  itemName: First Item
-  itemDescription: This is the first item I have created
-  itemSellingPrice: 1000
-  itemBuyingPrice: 2000
-  itemWeight: 4
-  itemRarity: 1
-  quantity: 1
+  id: 0
+  itemType: 0
+  itemIcon: {fileID: 0}
+  itemName: 
+  itemDescription: 
+  itemSellingPrice: 0
+  itemBuyingPrice: 0
+  itemWeight: 0
+  itemRarity: 0
+  quantity: 0

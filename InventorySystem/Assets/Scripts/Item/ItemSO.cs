@@ -5,7 +5,8 @@ namespace InventorySystem.Items
     [CreateAssetMenu(menuName = "ScriptableObjects/Inventory Item SO", fileName = "ItemSO")]
     public class ItemSO : ScriptableObject
     {
-        /*public ItemType itemType;
+        public int id;
+        public ItemType itemType;
         public Sprite itemIcon;
 
         public string itemName;
@@ -19,6 +20,6 @@ namespace InventorySystem.Items
 
         public ItemRarity itemRarity;
 
-        public int quantity;*/
+        public int quantity;
     }
 }
