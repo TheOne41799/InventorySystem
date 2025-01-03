@@ -1,13 +1,15 @@
 using UnityEngine;
-using InventorySystem.Sound;
-using InventorySystem.Player;
 using InventorySystem.Items;
+using InventorySystem.UI;
+using System.Collections.Generic;
 
 namespace InventorySystem.Main
 {
     public class GameService : MonoBehaviour
     {
-        [SerializeField] private ItemDatabaseSO itemDatabase;
+        public ItemDatabaseSO itemDatabase;
+        public UIService uiService;
+
 
         private void Start()
         {

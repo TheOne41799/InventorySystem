@@ -1,6 +1,9 @@
 
 
-public class InventoryService
+namespace InventorySystem.Inventory
 {
+    public class InventoryService
+    {
 
+    }
 }
