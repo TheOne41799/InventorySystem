@@ -6,7 +6,7 @@ namespace InventorySystem.Main
 {
     public class GameService : MonoBehaviour
     {
-        private AudioService audioService;
+        /*private AudioService audioService;
         private PlayerService playerService;
 
         [SerializeField] private SoundSO soundScriptableObject;
@@ -38,6 +38,6 @@ namespace InventorySystem.Main
             {
                 Debug.Log("The money player has : " + playerService.GetAvailableMoney());
             }            
-        }
+        }*/
     }
 }
