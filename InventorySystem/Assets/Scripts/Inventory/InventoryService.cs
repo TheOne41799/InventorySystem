@@ -1,4 +1,5 @@
 
+using InventorySystem.Events;
 using InventorySystem.Items;
 using InventorySystem.UI;
 using System.Collections.Generic;
@@ -38,6 +39,14 @@ namespace InventorySystem.Inventory
             this.uIService = uiServ;
 
             currentSlotIndex = 0;
+
+
+            EventService.Instance.OnItemSelected.AddListener(AddItem);
+        }
+
+        ~InventoryService() 
+        {
+            EventService.Instance.OnItemSelected.RemoveListener(AddItem);
         }
 
         public void InitializeInventoryUI()
@@ -58,7 +67,7 @@ namespace InventorySystem.Inventory
             }
         }
 
-        public void AddItem(ItemSO item)
+        /*public void AddItem(ItemSO item)
         {
             if (inventoryItems.Count < totalInventorySlots)
             {
@@ -68,7 +77,7 @@ namespace InventorySystem.Inventory
 
                 currentSlotIndex++;
             }
-        }
+        }*/
 
         public void AddItem(ItemID id)
         {

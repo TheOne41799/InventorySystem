@@ -32,7 +32,7 @@ namespace InventorySystem.Main
         {
             if(Input.GetKeyDown(KeyCode.UpArrow))
             {
-                inventoryService.AddItem(itemDatabase.items[0]);
+                //inventoryService.AddItem(itemDatabase.items[0]);
             }
         }
     }

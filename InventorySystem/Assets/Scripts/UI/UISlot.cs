@@ -1,3 +1,4 @@
+using InventorySystem.Events;
 using InventorySystem.Items;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,9 +16,12 @@ namespace InventorySystem.UI
 
         public ItemID itemID;
 
+        
+
         public void OnPointerDown(PointerEventData eventData)
         {
             Debug.Log(itemID.ToString());
+            EventService.Instance.OnItemSelected.InvokeEvent(itemID);
         }
     }
 }
