@@ -3,9 +3,7 @@ using InventorySystem.Events;
 using InventorySystem.Items;
 using InventorySystem.UI;
 using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace InventorySystem.Inventory
 {
@@ -33,7 +31,7 @@ namespace InventorySystem.Inventory
         //      If not stackable, add item in the first empty slot
 
 
-        public InventoryService(ItemDatabaseSO db, UIService uiServ) 
+        public InventoryService(ItemDatabaseSO db, UIService uiServ)
         {
             this.database = db;
             this.uIService = uiServ;
@@ -42,11 +40,17 @@ namespace InventorySystem.Inventory
 
 
             EventService.Instance.OnItemPurchased.AddListener(AddItem);
+
+
+            //EventService.Instance.OnItemSold.AddListener(RemoveItem);
         }
 
-        ~InventoryService() 
+        ~InventoryService()
         {
             EventService.Instance.OnItemPurchased.RemoveListener(AddItem);
+
+
+            //EventService.Instance.OnItemSold.RemoveListener(RemoveItem);
         }
 
         public void InitializeInventoryUI()
@@ -65,50 +69,13 @@ namespace InventorySystem.Inventory
                 slots.Add(slot);
                 uIService.AddInventorySlots(slot);
 
-                
+
             }
         }
 
-        /*public void AddItem(ItemSO item)
-        {
-            if (inventoryItems.Count < totalInventorySlots)
-            {
-                inventoryItems.Add(item);
 
-                uIService.SetSlotProperties(currentSlotIndex, item.quantity, item.itemIcon);
 
-                currentSlotIndex++;
-            }
-        }*/
-
-        public void AddItem(ItemID id, ItemSource source)
-        {
-            if (inventoryItems.Count < totalInventorySlots && source == ItemSource.SHOP_ITEM)
-            {
-                for (int i = 0; i < database.items.Count; i++)
-                {
-                    if (database.items[i].itemID == id )
-                    {
-                        inventoryItems.Add(database.items[i]);
-                        uIService.SetSlotProperties(currentSlotIndex, database.items[i].quantity, database.items[i].itemIcon);
-
-                        UISlot slot = slots[currentSlotIndex].GetComponent<UISlot>();
-                        slot.slotImage.sprite = database.items[i].itemIcon;
-                        slot.quantityText.text = database.items[i].quantity.ToString();
-                        slot.itemID = database.items[i].itemID;
-                        slot.itemSource = ItemSource.INVENTORY_ITEM;
-                    }
-                }
-
-                currentSlotIndex++;
-            }
-            else
-            {
-                Debug.Log("Not possible to purchase inventory item");
-            }
-        }
-
-        public void AddItem(ItemID id)
+        /*public void AddItem(ItemID id)
         {
             if (inventoryItems.Count < totalInventorySlots)
             {
@@ -133,18 +100,75 @@ namespace InventorySystem.Inventory
             {
                 Debug.Log("Not possible to purchase inventory item");
             }
+        }*/
+
+
+        public void AddItem(ItemID id)
+        {
+            /*if (inventoryItems.Count < totalInventorySlots)
+            {
+                for (int i = 0; i < database.items.Count; i++)
+                {
+                    if (database.items[i].itemID == id)
+                    {
+                        inventoryItems.Add(database.items[i]);
+                        uIService.SetSlotProperties(currentSlotIndex, database.items[i].quantity, database.items[i].itemIcon);
+
+                        UISlot slot = slots[currentSlotIndex].GetComponent<UISlot>();
+                        slot.slotImage.sprite = database.items[i].itemIcon;
+                        slot.quantityText.text = database.items[i].quantity.ToString();
+                        slot.itemID = database.items[i].itemID;
+                        slot.itemSource = ItemSource.INVENTORY_ITEM;
+                    }
+                }
+
+                currentSlotIndex++;
+            }*/
+
+
+            ItemSO itemToAdd = null;
+            for (int i = 0; i < database.items.Count; i++)
+            {
+                if (database.items[i].itemID == id)
+                {
+                    itemToAdd = database.items[i];
+                    break;
+                }
+            }
+
+            if (itemToAdd == null)
+            {
+                Debug.LogError("Item not found in database.");
+                return;
+            }
+
+            if (itemToAdd.isStackable)
+            {
+                Debug.Log("");
+                Debug.Log("Stackable");
+            }
+            else
+            {
+                Debug.Log("Not stackable");
+            }
         }
 
-        /*public void RemoveItem(int index)
+
+        public void RemoveItem(ItemID id)
         {
-            if (inventoryItems.Count > 0)
-            {
-                inventoryItems.RemoveAt(index);
+            Debug.Log("Remove Item");
 
-                uIService.SetSlotProperties(currentSlotIndex, 0, null);
+            
+        }
 
-                currentSlotIndex--;
-            }
-        }*/
+
+
+
+
+
+
+
+
+
     }
 }

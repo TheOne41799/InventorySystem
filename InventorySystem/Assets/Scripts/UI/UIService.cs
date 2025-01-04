@@ -49,12 +49,9 @@ namespace InventorySystem.UI
 
         public void SlotSelected(UISlot slot)
         {
-            Debug.Log("asasd");
-            // Deselect the previously selected slot
             if (selectedSlot != null)
                 selectedSlot.SetOutline(false);
 
-            // Select the new slot
             selectedSlot = slot;
             if (selectedSlot != null)
                 selectedSlot.SetOutline(true);
@@ -68,8 +65,18 @@ namespace InventorySystem.UI
                 return;
             }
 
-            // Publish event for item purchase
             EventService.Instance.OnItemPurchased.InvokeEvent(selectedSlot.itemID);
+        }
+
+        public void SellItem()
+        {
+            if (selectedSlot == null || selectedSlot.itemSource != ItemSource.INVENTORY_ITEM)
+            {
+                Debug.LogWarning("No item selected from inventory to sell.");
+                return;
+            }
+
+            EventService.Instance.OnItemSold.InvokeEvent(selectedSlot.itemID);
         }
     }
 }

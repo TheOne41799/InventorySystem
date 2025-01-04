@@ -22,3 +22,4 @@ MonoBehaviour:
   itemWeight: 1
   itemRarity: 0
   quantity: 2
+  isStackable: 1

@@ -21,15 +21,20 @@ namespace InventorySystem.Events
         }
 
         public EventController<UISlot> OnItemSelected { get; private set; }
-        public EventController<ItemID, ItemSource> OnItemPurchaseClicked { get; private set; }
 
         public EventController<ItemID> OnItemPurchased { get; private set; }
+
+
+
+        public EventController<ItemID> OnItemSold { get; private set; }
 
         public EventService()
         {
             OnItemSelected = new EventController<UISlot>();
-            OnItemPurchaseClicked = new EventController<ItemID, ItemSource>();
             OnItemPurchased = new EventController<ItemID>();
+
+
+            OnItemSold = new EventController<ItemID>();
         }
     }
 }

@@ -22,6 +22,7 @@ namespace InventorySystem.Items
         public ItemRarity itemRarity;
 
         public int quantity;
+        public bool isStackable;
     }
 
 

@@ -25,8 +25,6 @@ namespace InventorySystem.UI
         public void OnPointerDown(PointerEventData eventData)
         {
             EventService.Instance.OnItemSelected.InvokeEvent(this);
-            //EventService.Instance.OnItemSelected.InvokeEvent();
-            //EventService.Instance.OnItemPurchaseClicked.InvokeEvent(itemID, itemSource);
         }
 
         public void SetOutline(bool isActive)
