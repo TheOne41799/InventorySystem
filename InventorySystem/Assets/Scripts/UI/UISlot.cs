@@ -14,13 +14,25 @@ namespace InventorySystem.UI
         public Image slotImage;
         public TextMeshProUGUI quantityText;
 
+        public GameObject outline;
+
         public ItemID itemID;
 
         public ItemSource itemSource;
 
+        
+
         public void OnPointerDown(PointerEventData eventData)
         {
-            EventService.Instance.OnItemSelected.InvokeEvent(itemID, itemSource);
+            EventService.Instance.OnItemSelected.InvokeEvent(this);
+            //EventService.Instance.OnItemSelected.InvokeEvent();
+            //EventService.Instance.OnItemPurchaseClicked.InvokeEvent(itemID, itemSource);
+        }
+
+        public void SetOutline(bool isActive)
+        {
+            if (outline != null)
+                outline.SetActive(isActive);
         }
     }
 }

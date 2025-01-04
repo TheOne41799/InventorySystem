@@ -24,7 +24,6 @@ namespace InventorySystem.Inventory
 
 
         //How to add an item
-        //  Select an item from shop
         //  Check for cash, weight of inventory, availability of slot in inventory
         //  Purchase item
         //  After purchasing check if the item is stackable
@@ -42,12 +41,12 @@ namespace InventorySystem.Inventory
             currentSlotIndex = 0;
 
 
-            EventService.Instance.OnItemSelected.AddListener(AddItem);
+            EventService.Instance.OnItemPurchased.AddListener(AddItem);
         }
 
         ~InventoryService() 
         {
-            EventService.Instance.OnItemSelected.RemoveListener(AddItem);
+            EventService.Instance.OnItemPurchased.RemoveListener(AddItem);
         }
 
         public void InitializeInventoryUI()
@@ -89,6 +88,33 @@ namespace InventorySystem.Inventory
                 for (int i = 0; i < database.items.Count; i++)
                 {
                     if (database.items[i].itemID == id )
+                    {
+                        inventoryItems.Add(database.items[i]);
+                        uIService.SetSlotProperties(currentSlotIndex, database.items[i].quantity, database.items[i].itemIcon);
+
+                        UISlot slot = slots[currentSlotIndex].GetComponent<UISlot>();
+                        slot.slotImage.sprite = database.items[i].itemIcon;
+                        slot.quantityText.text = database.items[i].quantity.ToString();
+                        slot.itemID = database.items[i].itemID;
+                        slot.itemSource = ItemSource.INVENTORY_ITEM;
+                    }
+                }
+
+                currentSlotIndex++;
+            }
+            else
+            {
+                Debug.Log("Not possible to purchase inventory item");
+            }
+        }
+
+        public void AddItem(ItemID id)
+        {
+            if (inventoryItems.Count < totalInventorySlots)
+            {
+                for (int i = 0; i < database.items.Count; i++)
+                {
+                    if (database.items[i].itemID == id)
                     {
                         inventoryItems.Add(database.items[i]);
                         uIService.SetSlotProperties(currentSlotIndex, database.items[i].quantity, database.items[i].itemIcon);

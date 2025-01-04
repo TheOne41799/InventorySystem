@@ -1,6 +1,7 @@
 
 
 using InventorySystem.Items;
+using InventorySystem.UI;
 
 namespace InventorySystem.Events
 {
@@ -19,11 +20,16 @@ namespace InventorySystem.Events
             }
         }
 
-        public EventController<ItemID, ItemSource> OnItemSelected { get; private set; }
+        public EventController<UISlot> OnItemSelected { get; private set; }
+        public EventController<ItemID, ItemSource> OnItemPurchaseClicked { get; private set; }
+
+        public EventController<ItemID> OnItemPurchased { get; private set; }
 
         public EventService()
         {
-            OnItemSelected = new EventController<ItemID, ItemSource>();
+            OnItemSelected = new EventController<UISlot>();
+            OnItemPurchaseClicked = new EventController<ItemID, ItemSource>();
+            OnItemPurchased = new EventController<ItemID>();
         }
     }
 }

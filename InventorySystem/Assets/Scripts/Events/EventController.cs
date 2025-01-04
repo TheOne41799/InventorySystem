@@ -10,6 +10,14 @@ namespace InventorySystem.Events
         public void RemoveListener(Action listener) => baseEvent -= listener;
     }
 
+    public class EventController<T>
+    {
+        public event Action<T> baseEvent;
+        public void InvokeEvent(T type) => baseEvent?.Invoke(type);
+        public void AddListener(Action<T> listener) => baseEvent += listener;
+        public void RemoveListener(Action<T> listener) => baseEvent -= listener;
+    }
+
     public class EventController<T1, T2 >
     {
         public event Action<T1, T2> baseEvent;
