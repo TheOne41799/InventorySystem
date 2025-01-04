@@ -12,7 +12,7 @@ namespace InventorySystem.UI
     public class UISlot : MonoBehaviour, IPointerDownHandler
     {
         public Image slotImage;
-        public TextMeshProUGUI quantityText;
+        //public TextMeshProUGUI quantityText;
 
         public GameObject outline;
 

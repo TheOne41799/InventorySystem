@@ -39,7 +39,7 @@ namespace InventorySystem.Shop
                 uIService.AddShopSlots(slot);
 
                 slot.slotImage.sprite = database.items[i].itemIcon;
-                slot.quantityText.text = database.items[i].quantity.ToString();
+                //slot.quantityText.text = database.items[i].quantity.ToString();
                 slot.itemID = database.items[i].itemID;
                 slot.itemSource = ItemSource.SHOP_ITEM;
             }

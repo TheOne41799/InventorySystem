@@ -43,7 +43,7 @@ namespace InventorySystem.UI
 
         public void SetSlotProperties(int id, int quantity, Sprite sprite)
         {
-            inventorySlots[id].quantityText.text = quantity.ToString();
+            //inventorySlots[id].quantityText.text = quantity.ToString();
             inventorySlots[id].slotImage.sprite = sprite;
         }
 

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6048535947021603029
 RectTransform:
   m_ObjectHideFlags: 0
@@ -225,7 +225,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotImage: {fileID: 8298599301628661751}
-  quantityText: {fileID: 1618588810664770065}
   outline: {fileID: 7661831206752386226}
   itemID: 0
   itemSource: 0

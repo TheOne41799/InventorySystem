@@ -42,7 +42,7 @@ namespace InventorySystem.Inventory
             EventService.Instance.OnItemPurchased.AddListener(AddItem);
 
 
-            //EventService.Instance.OnItemSold.AddListener(RemoveItem);
+            EventService.Instance.OnItemSold.AddListener(RemoveItem);
         }
 
         ~InventoryService()
@@ -50,7 +50,7 @@ namespace InventorySystem.Inventory
             EventService.Instance.OnItemPurchased.RemoveListener(AddItem);
 
 
-            //EventService.Instance.OnItemSold.RemoveListener(RemoveItem);
+            EventService.Instance.OnItemSold.RemoveListener(RemoveItem);
         }
 
         public void InitializeInventoryUI()
@@ -105,27 +105,6 @@ namespace InventorySystem.Inventory
 
         public void AddItem(ItemID id)
         {
-            /*if (inventoryItems.Count < totalInventorySlots)
-            {
-                for (int i = 0; i < database.items.Count; i++)
-                {
-                    if (database.items[i].itemID == id)
-                    {
-                        inventoryItems.Add(database.items[i]);
-                        uIService.SetSlotProperties(currentSlotIndex, database.items[i].quantity, database.items[i].itemIcon);
-
-                        UISlot slot = slots[currentSlotIndex].GetComponent<UISlot>();
-                        slot.slotImage.sprite = database.items[i].itemIcon;
-                        slot.quantityText.text = database.items[i].quantity.ToString();
-                        slot.itemID = database.items[i].itemID;
-                        slot.itemSource = ItemSource.INVENTORY_ITEM;
-                    }
-                }
-
-                currentSlotIndex++;
-            }*/
-
-
             ItemSO itemToAdd = null;
             for (int i = 0; i < database.items.Count; i++)
             {
@@ -142,23 +121,71 @@ namespace InventorySystem.Inventory
                 return;
             }
 
-            if (itemToAdd.isStackable)
+            if (inventoryItems.Count < totalInventorySlots)
             {
-                Debug.Log("");
-                Debug.Log("Stackable");
+                inventoryItems.Add(itemToAdd);
+
+                for (int i = 0; i < slots.Count; i++)
+                {
+                    if (slots[i].slotImage.sprite == null)
+                    {
+                        slots[i].slotImage.sprite = itemToAdd.itemIcon;
+                        slots[i].itemID = itemToAdd.itemID;
+                        slots[i].itemSource = ItemSource.INVENTORY_ITEM;
+                        break;
+                    }
+                }
             }
             else
             {
-                Debug.Log("Not stackable");
+                Debug.LogWarning("Inventory full, can't add item.");
             }
         }
 
-
         public void RemoveItem(ItemID id)
         {
-            Debug.Log("Remove Item");
+            ItemSO itemToSell = null;
+            int indexToRemove = -1;
 
-            
+            for (int i = 0; i < inventoryItems.Count; i++)
+            {
+                if (inventoryItems[i].itemID == id)
+                {
+                    itemToSell = inventoryItems[i];
+                    indexToRemove = i;
+                    break;
+                }
+            }
+
+            if (itemToSell == null)
+            {
+                Debug.LogWarning("Item not found in inventory.");
+                return;
+            }
+
+            inventoryItems.RemoveAt(indexToRemove);
+
+            RemoveSlot(indexToRemove);
+        }
+
+        private void RemoveSlot(int index)
+        {
+            if (index < 0 || index >= slots.Count) return;
+
+            slots[index].slotImage.sprite = null;
+            slots[index].itemID = ItemID.NONE;
+            slots[index].itemSource = ItemSource.NONE;
+
+            for (int i = index; i < slots.Count - 1; i++)
+            {
+                slots[i].slotImage.sprite = slots[i + 1].slotImage.sprite;
+                slots[i].itemID = slots[i + 1].itemID;
+                slots[i].itemSource = slots[i + 1].itemSource;
+
+                slots[i + 1].slotImage.sprite = null;
+                slots[i + 1].itemID = ItemID.NONE;
+                slots[i + 1].itemSource = ItemSource.NONE;
+            }
         }
 
 
