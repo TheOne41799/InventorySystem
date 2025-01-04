@@ -41,6 +41,7 @@ namespace InventorySystem.Shop
                 slot.slotImage.sprite = database.items[i].itemIcon;
                 slot.quantityText.text = database.items[i].quantity.ToString();
                 slot.itemID = database.items[i].itemID;
+                slot.itemSource = ItemSource.SHOP_ITEM;
             }
         }
     }

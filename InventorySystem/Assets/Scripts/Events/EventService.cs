@@ -19,11 +19,11 @@ namespace InventorySystem.Events
             }
         }
 
-        public EventController<ItemID> OnItemSelected { get; private set; }
+        public EventController<ItemID, ItemSource> OnItemSelected { get; private set; }
 
         public EventService()
         {
-            OnItemSelected = new EventController<ItemID>();
+            OnItemSelected = new EventController<ItemID, ItemSource>();
         }
     }
 }

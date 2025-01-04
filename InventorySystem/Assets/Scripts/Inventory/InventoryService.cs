@@ -3,6 +3,7 @@ using InventorySystem.Events;
 using InventorySystem.Items;
 using InventorySystem.UI;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -63,7 +64,9 @@ namespace InventorySystem.Inventory
 
                 UISlot slot = newItem.GetComponent<UISlot>();
                 slots.Add(slot);
-                uIService.AddInventorySlots(slot);                
+                uIService.AddInventorySlots(slot);
+
+                
             }
         }
 
@@ -79,20 +82,30 @@ namespace InventorySystem.Inventory
             }
         }*/
 
-        public void AddItem(ItemID id)
+        public void AddItem(ItemID id, ItemSource source)
         {
-            if (inventoryItems.Count < totalInventorySlots)
+            if (inventoryItems.Count < totalInventorySlots && source == ItemSource.SHOP_ITEM)
             {
                 for (int i = 0; i < database.items.Count; i++)
                 {
-                    if (database.items[i].itemID == id)
+                    if (database.items[i].itemID == id )
                     {
                         inventoryItems.Add(database.items[i]);
                         uIService.SetSlotProperties(currentSlotIndex, database.items[i].quantity, database.items[i].itemIcon);
+
+                        UISlot slot = slots[currentSlotIndex].GetComponent<UISlot>();
+                        slot.slotImage.sprite = database.items[i].itemIcon;
+                        slot.quantityText.text = database.items[i].quantity.ToString();
+                        slot.itemID = database.items[i].itemID;
+                        slot.itemSource = ItemSource.INVENTORY_ITEM;
                     }
                 }
 
                 currentSlotIndex++;
+            }
+            else
+            {
+                Debug.Log("Not possible to purchase inventory item");
             }
         }
 

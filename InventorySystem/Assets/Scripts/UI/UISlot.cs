@@ -16,12 +16,11 @@ namespace InventorySystem.UI
 
         public ItemID itemID;
 
-        
+        public ItemSource itemSource;
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            Debug.Log(itemID.ToString());
-            EventService.Instance.OnItemSelected.InvokeEvent(itemID);
+            EventService.Instance.OnItemSelected.InvokeEvent(itemID, itemSource);
         }
     }
 }

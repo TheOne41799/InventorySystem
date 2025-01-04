@@ -36,4 +36,13 @@ namespace InventorySystem.Items
         GOLDEN_SWORD,
         SILVER_SWORD
     }
+
+    public enum ItemSource
+    {
+        NONE,
+        SHOP_ITEM,
+        INVENTORY_ITEM
+    }
 }
+
+
