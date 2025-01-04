@@ -1,44 +1,39 @@
 using UnityEngine;
-using InventorySystem.Sound;
-using InventorySystem.Player;
+using InventorySystem.Items;
+using InventorySystem.UI;
+using InventorySystem.Inventory;
+using InventorySystem.Shop;
 
 namespace InventorySystem.Main
 {
     public class GameService : MonoBehaviour
     {
-        private AudioService audioService;
-        private PlayerService playerService;
-
-        [SerializeField] private SoundSO soundScriptableObject;
-        [SerializeField] private PlayerView playerView;
-
-        [SerializeField] private AudioSource sfxSource;
-        [SerializeField] private AudioSource bgMusicSource;
+        public ItemDatabaseSO itemDatabase;
+        public UIService uiService;
+        public InventoryService inventoryService;
+        public ShopService shopService;
 
 
         private void Start()
         {
-            InitializeServices();
-            InjectDependencies();
+            inventoryService = new InventoryService(itemDatabase, uiService);
+            shopService = new ShopService(itemDatabase, uiService);
+
+            Init();
         }
 
-        private void InitializeServices()
+        private void Init()
         {
-            audioService = new AudioService(soundScriptableObject, sfxSource, bgMusicSource);
-            playerService = new PlayerService(playerView);
-        }
-
-        private void InjectDependencies()
-        {
-            playerService.Init();
+            inventoryService.InitializeInventoryUI();
+            shopService.InitializeShopUI();
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.I))
+            if(Input.GetKeyDown(KeyCode.UpArrow))
             {
-                Debug.Log("The money player has : " + playerService.GetAvailableMoney());
-            }            
+                //inventoryService.AddItem(itemDatabase.items[0]);
+            }
         }
     }
 }

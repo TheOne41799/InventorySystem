@@ -4,13 +4,11 @@ namespace InventorySystem.Player
 {
     public class PlayerService
     {
-        private PlayerView playerView;
-
+        /*private PlayerView playerView;
 
         public PlayerService(PlayerView playerView) 
         {
-            this.playerView = playerView;
-            
+            this.playerView = playerView;            
         }
 
         public void Init()
@@ -21,6 +19,6 @@ namespace InventorySystem.Player
         public int GetAvailableMoney()
         {
             return playerView.GetAvailableMoney(); 
-        }
+        }*/
     }
 }

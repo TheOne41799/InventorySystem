@@ -4,8 +4,7 @@ namespace InventorySystem.Player
 {
     public class PlayerView : MonoBehaviour
     {
-        private int availableMoney = 0;
-
+        /*private int availableMoney = 0;
 
         private void Update()
         {
@@ -22,7 +21,7 @@ namespace InventorySystem.Player
         public int GetAvailableMoney()
         {
             return availableMoney;
-        }
+        }*/
     }
 }
 
