@@ -173,6 +173,8 @@ MonoBehaviour:
   shopSlotPrefab: {fileID: 5921597562334029469, guid: 39589c57b91ceee43ab9be5168e484af,
     type: 3}
   shopParent: {fileID: 377897815}
+  inventoryView: {fileID: 571037047}
+  shopView: {fileID: 377897818}
 --- !u!1 &159086881
 GameObject:
   m_ObjectHideFlags: 0

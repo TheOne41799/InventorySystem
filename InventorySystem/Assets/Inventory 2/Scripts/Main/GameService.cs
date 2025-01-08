@@ -18,8 +18,8 @@ namespace NewInventorySystem.Main
         private ShopModel shopModel;
         private InventoryController inventoryController;
         private ShopController shopController;
-        private InventoryView inventoryView;
-        private ShopView shopView;
+        public InventoryView inventoryView;
+        public ShopView shopView;
 
         private void Start()
         {
@@ -28,6 +28,8 @@ namespace NewInventorySystem.Main
 
             inventoryController = new InventoryController(inventoryModel);
             shopController = new ShopController(shopModel);
+
+            
 
             inventoryView.Initialize(inventoryController);
             shopView.Initialize(shopController);
