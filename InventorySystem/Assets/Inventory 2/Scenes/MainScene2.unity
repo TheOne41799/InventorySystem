@@ -166,11 +166,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea0de35c1961488488bef41e29522eb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDatabase: {fileID: 0}
-  inventorySlotPrefab: {fileID: 1704191884}
-  inventoryParent: {fileID: 1704191885}
-  shopSlotPrefab: {fileID: 1389554058}
-  shopParent: {fileID: 1389554059}
+  itemDatabase: {fileID: 11400000, guid: a2739ef8ffad76a4781c0f89ffb91d56, type: 2}
+  inventorySlotPrefab: {fileID: 5825690192951778513, guid: 05d90bfeeac0e4744a19e966a21d059c,
+    type: 3}
+  inventoryParent: {fileID: 571037044}
+  shopSlotPrefab: {fileID: 5921597562334029469, guid: 39589c57b91ceee43ab9be5168e484af,
+    type: 3}
+  shopParent: {fileID: 377897815}
 --- !u!1 &159086881
 GameObject:
   m_ObjectHideFlags: 0
